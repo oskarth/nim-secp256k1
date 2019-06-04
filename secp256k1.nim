@@ -9,7 +9,8 @@ const wrapperPath = currentSourcePath.rsplit(DirSep, 1)[0] & "/secp256k1_wrapper
 
 const secpSrc = wrapperPath & "/secp256k1/src/secp256k1.c"
 
-{.compile: secpSrc.}
+when not defined(noCompileSecp):
+  {.compile: secpSrc.}
 
 {.deadCodeElim: on.}
 
